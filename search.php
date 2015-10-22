@@ -7,7 +7,7 @@ $count_results = 0;
 $search_results = array();
 
 if (!empty($search)) {
-	$query = $db->prepare('SELECT * FROM articles WHERE name LIKE :search OR content LIKE :search');
+	$query = $db->prepare('SELECT * FROM posts WHERE name LIKE :search OR content LIKE :search');
 	$query->bindValue(':search', '%'.$search.'%', PDO::PARAM_STR);
 	$query->execute();
 

@@ -1,7 +1,7 @@
 <?php
 require_once 'partials/header.php';
 
-$query = $db->query('SELECT * FROM articles ORDER BY RAND() LIMIT 1');
+$query = $db->query('SELECT * FROM posts ORDER BY RAND() LIMIT 1');
 $article = $query->fetch();
 ?>
 

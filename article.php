@@ -8,7 +8,7 @@ if (empty($id)) {
 	exit();
 }
 
-$query = $db->prepare('SELECT * FROM articles WHERE id = :id');
+$query = $db->prepare('SELECT * FROM posts WHERE id = :id');
 $query->bindValue(':id', $id, PDO::PARAM_INT);
 $query->execute();
 $article = $query->fetch();
