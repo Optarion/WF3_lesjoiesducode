@@ -1,7 +1,7 @@
 <?php
 	require_once 'partials/head.php';
 
-	$name = !empty($_POST['name']) ? strip_tags($_POST['name']) : '';
+	$author = !empty($_POST['author']) ? strip_tags($_POST['author']) : '';
 	$content = !empty($_POST['content']) ? strip_tags($_POST['content']) : '';
 
 	// Initialiser un tableau $errors et une chaine $result
@@ -13,8 +13,8 @@
 
 		// Vérifier que les champs obligatoires ne sont pas vides
 		// Pour chaque erreur rencontrée, ajouter une entrée dans le tableau $errors correspondant au champ en erreur
-		if (empty($name) || strlen($name) > 100) {
-			$errors['name'] = 'Ton nom est invalide (longueur max 100)';
+		if (empty($author) || strlen($author) > 100) {
+			$errors['author'] = 'Ton nom est invalide (longueur max 100)';
 		}
 		if (empty($content) || strlen($content) < 20 || strlen($content) > 255) {
 			$errors['content'] = 'Le contenu de ta JDC est invalide (longueur min 20, longueur max 255)';
@@ -23,8 +23,8 @@
 		// S'il n'y a pas d'erreur on lance la requête d'insertion
 		if (empty($errors)) {
 
-			$query = $db->prepare('INSERT INTO articles SET name = :name, content = :content, creation_date = NOW()');
-			$query->bindValue(':name', $name, PDO::PARAM_STR);
+			$query = $db->prepare('INSERT INTO posts SET author = :author, content = :content, creation_date = NOW()');
+			$query->bindValue(':author', $author, PDO::PARAM_STR);
 			$query->bindValue(':content', $content, PDO::PARAM_STR);
 			$query->execute();
 
@@ -34,7 +34,8 @@
 			//Si la requête a réussie (c.f. lastInsertId()), on affiche une confirmation à l'utilisateur
 			if (!empty($insert_id)) {
 				$result .= '<div class="alert alert-success">Votre message a bien été envoyé</div>';
-				$result .= '<script>setTimeout(function() { location.href = "article.php?id='.$insert_id.'"; }, 3000);</script>';
+				$author = '';
+				$content = '';
 			} else {
 				$result .= '<div class="alert alert-danger">Une erreur s\'est produite, merci de réessayer ultèrieurement</div>';
 			}
@@ -60,12 +61,11 @@
 	<?php
 	if (!empty($result)) {
 		echo $result;
-	} else {
 	?>
-	<form action="send.php" method="POST">
+	<form action="article_add.php" method="POST">
 		<div class="form-group">
-			<label for="name">Votre nom</label>
-			<input type="text" class="form-control" name="name" id="name" placeholder="Entrez votre nom" value="<?= $name ?>">
+			<label for="author">Votre nom</label>
+			<input type="text" class="form-control" name="author" id="author" placeholder="Entrez votre nom" value="<?= $author ?>">
 		</div>
 		<div class="form-group">
 			<label for="content">Votre Joie de code</label>

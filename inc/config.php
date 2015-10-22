@@ -9,3 +9,8 @@ $pages = array(
 	'random.php' => 'JDC aléatoire',
 	'send.php' => 'Envoyer votre JDC',
 );
+
+$genders = array(
+	1 => 'Homme',
+	2 => 'Femme'
+);

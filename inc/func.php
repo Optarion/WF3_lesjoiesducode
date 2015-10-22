@@ -34,6 +34,10 @@ function userLogin($user) {
 	$_SESSION['user_id'] = $user['id'];
 	$_SESSION['firstname'] = $user['firstname'];
 	$_SESSION['lastname'] = $user['lastname'];
+
+	if($user['account_type'] == 'admin'){
+		$_SESSION['account_type'] = $user['account_type'];		
+	}
 	return true;
 }
 

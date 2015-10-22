@@ -1,5 +1,5 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container-fluid">
+	<div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 				<span class="sr-only">Navigation</span>
@@ -11,11 +11,16 @@
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="index.php">Tableau de bord</a></li>
-				<li><a href="settings.php">Paramètres</a></li>
-				<li><a href="profile.php">Profile</a></li>
-				<li><a href="../index.php">Site</a></li>
-				<li><a href="logout.php">Déconnexion</a></li>
+				<?php if(!empty($_SESSION)){ ?>
+					<li><a href="index.php">Tableau de bord</a></li>
+					<li><a href="settings.php">Paramètres</a></li>
+					<li><a href="profile.php">Profile</a></li>
+					<li><a href="../index.php">Site</a></li>
+					<li><a href="logout.php">Déconnexion</a></li>
+				<?php }else{ ?>
+					<li><a href="login.php">Connexion</a></li>
+				<?php } ?>
+
 			</ul>
 			<!--
 			<form class="navbar-form navbar-right">

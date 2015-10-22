@@ -1,8 +1,6 @@
 <?php
-require_once 'partials/header.php';
-require_once 'inc/func_nibb.php';
-
-echo debug($_POST);
+require_once 'partials/head.php';
+require_once '../inc/func_nibb.php';
 
 $email = !empty($_POST['email']) ? strip_tags($_POST['email']) : '';
 $password = !empty($_POST['password']) ? strip_tags($_POST['password']) : '';

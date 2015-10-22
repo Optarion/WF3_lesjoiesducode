@@ -1,10 +1,6 @@
 <?php
 require_once 'partials/header.php';
-
-$genders = array(
-	1 => 'Homme',
-	2 => 'Femme'
-);
+require_once 'inc/func_nibb.php';
 
 
 // Récupérer les données du formulaire depuis le tableau $_POST
@@ -53,7 +49,7 @@ if (!empty($_POST)) {
 	if (empty($errors)) {
 
 		// On va chercher un user corrspondant à l'email saisi
-		$query = $db->prepare('SELECT id FROM users WHERE email  = :email');
+		$query = $db->prepare('SELECT id FROM user WHERE email  = :email');
 		$query->bindValue(':email', $email, PDO::PARAM_STR);
 		$query->execute();
 		$user = $query->fetch();
@@ -64,7 +60,7 @@ if (!empty($_POST)) {
 
 			$crypted_password = password_hash($password, PASSWORD_BCRYPT);
 
-			$query = $db->prepare('INSERT INTO users SET firstname = :firstname, lastname = :lastname, gender = :gender, email = :email, password = :password, newsletter = :newsletter, cdate = NOW()');
+			$query = $db->prepare('INSERT INTO user SET firstname = :firstname, lastname = :lastname, gender = :gender, email = :email, password = :password, newsletter = :newsletter, created_date = NOW(), account_type = "user"');
 			$query->bindValue(':firstname', $firstname, PDO::PARAM_STR);
 			$query->bindValue(':lastname', $lastname, PDO::PARAM_STR);
 			$query->bindValue(':gender', $gender, PDO::PARAM_INT);
@@ -145,16 +141,6 @@ if (!empty($_POST)) {
 						<input type="radio" name="gender" value="<?= $gender_value ?>"<?= $checked ?>> <?= $gender_label ?>
 					</label>
 					<?php } ?>
-
-					<!--
-					<label class="radio-inline">
-						<input type="radio" name="gender" id="gender_male" value="1"<?= $gender == 1 ? ' checked' : ''?>> Homme
-					</label>
-
-					<label class="radio-inline">
-						<input type="radio" name="gender" id="gender_female" value="1"<?= $gender == 2 ? ' checked' : ''?>> Femme
-					</label>
-					-->
 
 				</div>
 

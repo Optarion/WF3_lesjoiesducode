@@ -27,12 +27,12 @@
 	<tbody>
 		<?php foreach($users as $user) { ?>
 		<tr>
-			<td><i class="fa fa-pencil "></i></td>
+			<td><a href="user_add.php?action=update&id=<?= $user['id'] ?>"><i class="fa fa-pencil "></i></a></td>
 			<td><a href="user_add.php?action=delete&id=<?= $user['id'] ?>" class="delete_user"><i class="fa fa-trash-o "></i></a></td>
 			<?php foreach($user as $data) {
 				if($data != $user['password']){?>
 
-				<td><?= ucfirst($data) ?></td>
+				<td><?= $data == $user['email'] ? $data : ucfirst($data) ?></td>
 				<?php }
 		} ?>
 

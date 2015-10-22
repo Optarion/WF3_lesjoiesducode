@@ -20,6 +20,8 @@
 						}
 					?>
 					<li class="<?= $active ?>"><a href="<?= $page_url ?>"><?= $page_name ?></a></li>
+					<?php } if(!empty($_SESSION['account_type'])){ ?>
+						<li class="<?= $active ?>"><a href="admin">Backoffice</a></li>	
 					<?php } ?>
 				</ul>
 
