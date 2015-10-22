@@ -20,6 +20,7 @@ $cgu = !empty($_POST['cgu']) ? intval($_POST['cgu']) : '0';
 
 // Initialiser un tableau $errors et une chaine $result
 $errors = array();
+$result = '';
 $success = false;
 
 // Le formulaire a été soumis, l'utilisateur a appuyé sur Envoyer
@@ -54,34 +55,44 @@ if (!empty($_POST)) {
 	// S'il n'y a pas d'erreur on lance la requête d'insertion
 	if (empty($errors)) {
 
-		$crypted_password = password_hash($password, PASSWORD_BCRYPT);
-
-		$query = $db->prepare('INSERT INTO user SET firstname = :firstname, lastname = :lastname, gender = :gender, email = :email, password = :password, newsletter = :newsletter, created_date = NOW()');
-		$query->bindValue('firstname', $firstname);
-		$query->bindValue('lastname', $lastname);
-		$query->bindValue('gender', $gender, PDO::PARAM_INT);
+		$query = $db->prepare('SELECT id FROM user WHERE email = :email');
 		$query->bindValue('email', $email);
-		$query->bindValue('password', $crypted_password);
-		$query->bindValue('newsletter', $newsletter, PDO::PARAM_INT);
 		$query->execute();
+		$user = $query->fetch();
 
-		// On récupère l'identifiant unique automatiquement généré par la requête
-		$insert_id = $db->lastInsertId();
+		if(!empty($user)){
+			$errors['email_double'] = 'L\'email est déjà pris';
+		}else{
 
-		//Si la requête a réussie (c.f. lastInsertId()), on affiche une confirmation à l'utilisateur
-		if (!empty($insert_id)) {
-			$user = array(
-				'user_id' => $insert_id,
-				'firstname' => $firstname,
-				'lastname' => $lastname,
-				);
+			$crypted_password = password_hash($password, PASSWORD_BCRYPT);
 
-			$success = userLogin($user);
+			$query = $db->prepare('INSERT INTO user SET firstname = :firstname, lastname = :lastname, gender = :gender, email = :email, password = :password, newsletter = :newsletter, created_date = NOW()');
+			$query->bindValue('firstname', $firstname);
+			$query->bindValue('lastname', $lastname);
+			$query->bindValue('gender', $gender, PDO::PARAM_INT);
+			$query->bindValue('email', $email);
+			$query->bindValue('password', $crypted_password);
+			$query->bindValue('newsletter', $newsletter, PDO::PARAM_INT);
+			$query->execute();
 
-			$result .= '<div class="alert alert-success">Inscription validée</div>';
-			$result .= '<script>setTimeout(function() { location.href = "article.php?id='.$insert_id.'"; }, 3000);</script>';
-		} else {
-			$result .= '<div class="alert alert-danger">Une erreur s\'est produite, merci de réessayer ultèrieurement</div>';
+			// On récupère l'identifiant unique automatiquement généré par la requête
+			$insert_id = $db->lastInsertId();
+
+			//Si la requête a réussie (c.f. lastInsertId()), on affiche une confirmation à l'utilisateur
+			if (!empty($insert_id)) {
+				$user = array(
+					'id' => $insert_id,
+					'firstname' => $firstname,
+					'lastname' => $lastname,
+					);
+
+				$success = userLogin($user);
+
+				$result .= '<div class="alert alert-success">Inscription validée</div>';
+				$result .= '<script>setTimeout(function() { location.href = "article.php?id='.$insert_id.'"; }, 3000);</script>';
+			} else {
+				$result .= '<div class="alert alert-danger">Une erreur s\'est produite, merci de réessayer ultèrieurement</div>';
+			}
 		}
 	}
 }
@@ -102,6 +113,14 @@ if (!empty($_POST)) {
 				</ul>
 			</div>
 			<?php } ?>
+
+			<?php if ($success == true) { ?>
+			<div class="alert alert-info">
+				<p>Inscription Réussie</p>
+				<p>Bienvenue <?= $firstname.' '.$lastname ?>
+			</div>
+			<script>setTimeout(function(){ location.href = "index.php";}, 3000)</script>
+			<?php }else{ ?>
 
 			<form class="form-register" method="POST" novalidate>
 
@@ -159,6 +178,8 @@ if (!empty($_POST)) {
 				<button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Inscription</button>
 
 			</form><!-- /form -->
+
+			<?php } ?>
 
 		</div><!-- /card-container -->
 

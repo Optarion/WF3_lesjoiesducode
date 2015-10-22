@@ -16,8 +16,6 @@ if(!empty($_COOKIE['remember_me'])){
 	$password = !empty($_POST['password']) ? strip_tags($_POST['password']) : '';
 	$remember = !empty($_POST['remember']) ? intval($_POST['remember']) : '';
 
-
-
 	// Initialiser un tableau $errors et une chaine $result
 	$errors = array();
 
