@@ -5,7 +5,7 @@
 
 		<div class="post">
 
-		    <p><?= date('d-m-Y', strtotime($article['creation_date'])) ?> par <a href="search.php?search=<?= $article['name'] ?>"><?= ucfirst($article['name']) ?></a></p>
+		    <p><?= date('d-m-Y', strtotime($article['creation_date'])) ?> par <a href="search.php?search=<?= $article['author'] ?>"><?= ucfirst($article['author']) ?></a></p>
 
 		    <blockquote>
 		      <p><?= nl2br(cutString($article['content'], $max_length, ' [...]')) ?></p>

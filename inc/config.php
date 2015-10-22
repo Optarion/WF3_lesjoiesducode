@@ -1,5 +1,8 @@
 <?php
 
+session_name('wbf3_sess');
+session_start();
+
 $current_page = basename($_SERVER['PHP_SELF']);
 
 $pages = array(

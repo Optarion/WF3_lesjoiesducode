@@ -24,3 +24,20 @@ function cutString($text, $max_length, $end = '...') {
 	// On retourne la chaine telle qu'on l'a reçu
 	return $text;
 }
+
+// AUTHENT //
+
+function userLogin($user){
+	if(empty($user)){
+		return false;
+	}else{
+		$_SESSION['id'] = $user['id'];
+		$_SESSION['firstname'] = $user['firstname'];
+		$_SESSION['lastname'] = $user['lastname'];
+		return true;
+	}
+}
+
+function userIsLogged(){
+	return !empty($_SESSION['id']);
+}

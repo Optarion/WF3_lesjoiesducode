@@ -1,0 +1,1052 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"new",
+				"news_month"
+			],
+			[
+				"count",
+				"count_rows"
+			],
+			[
+				"margin-",
+				"margin-bottom"
+			],
+			[
+				"nb",
+				"nb_pages"
+			],
+			[
+				"nb_",
+				"nb_items_per_page"
+			],
+			[
+				"subje",
+				"subject_label"
+			],
+			[
+				"select",
+				"selected"
+			],
+			[
+				"arra",
+				"array_errors"
+			],
+			[
+				"product",
+				"product_date"
+			],
+			[
+				"current",
+				"current_picture_path"
+			],
+			[
+				"picture",
+				"current_picture"
+			],
+			[
+				"text-",
+				"text-align"
+			],
+			[
+				"curret",
+				"current_post_id"
+			],
+			[
+				"hor",
+				"horoscopes"
+			],
+			[
+				"user_",
+				"user_birthdate"
+			],
+			[
+				"user",
+				"user_year"
+			],
+			[
+				"url",
+				"url_referer"
+			],
+			[
+				"arti",
+				"article_id"
+			],
+			[
+				"colo",
+				"color_en"
+			],
+			[
+				"post",
+				"post_date"
+			],
+			[
+				"echo",
+				"echo_picture"
+			],
+			[
+				"set",
+				"setlocale"
+			],
+			[
+				"post_",
+				"post_picture"
+			],
+			[
+				"acto",
+				"actor_salary"
+			],
+			[
+				"act",
+				"actor_salary"
+			],
+			[
+				"actor",
+				"actor_rank"
+			],
+			[
+				"calc",
+				"calcPourcentage"
+			],
+			[
+				"birth",
+				"birthdate_year"
+			],
+			[
+				"curren",
+				"current_year"
+			],
+			[
+				"da",
+				"birth_date"
+			],
+			[
+				"john",
+				"john"
+			],
+			[
+				"estim",
+				"estimated_fortune"
+			],
+			[
+				"chain",
+				"chaine2"
+			],
+			[
+				"lists",
+				"list-style-type"
+			],
+			[
+				"is",
+				"isValid"
+			],
+			[
+				"isF",
+				"isFormValid"
+			],
+			[
+				"cehck",
+				"checkbox"
+			],
+			[
+				"check",
+				"checkbox"
+			],
+			[
+				"pass",
+				"password2"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"border-",
+				"border-radius"
+			],
+			[
+				"val",
+				"val"
+			],
+			[
+				"list",
+				"listLastName"
+			],
+			[
+				"lis",
+				"listLastName"
+			],
+			[
+				"las",
+				"listLastName"
+			],
+			[
+				"get",
+				"getFullYear"
+			],
+			[
+				"create",
+				"createMessage"
+			],
+			[
+				"cpu",
+				"cpuPossibilities"
+			],
+			[
+				"cp",
+				"cpuPossibilities"
+			],
+			[
+				"fade",
+				"fadeOut"
+			],
+			[
+				"hide",
+				"hideImg"
+			],
+			[
+				"show",
+				"showImg"
+			],
+			[
+				"comp",
+				"computerScore"
+			],
+			[
+				"cho",
+				"choice"
+			],
+			[
+				"score",
+				"computerScore"
+			],
+			[
+				"paragr",
+				"paragraph1"
+			],
+			[
+				"para",
+				"paragraph1"
+			],
+			[
+				"budget",
+				"budgetQuotidien"
+			],
+			[
+				"convert",
+				"convertToDollar"
+			],
+			[
+				"conver",
+				"convertToDollar"
+			],
+			[
+				"de",
+				"declineColors"
+			],
+			[
+				"prima",
+				"primaryColors"
+			],
+			[
+				"li",
+				"listFirstName"
+			],
+			[
+				"on",
+				"onclick	Attr"
+			],
+			[
+				"prot",
+				"prototype"
+			],
+			[
+				"y",
+				"y"
+			],
+			[
+				"onmouse",
+				"onmouseover	Attr"
+			],
+			[
+				"On",
+				"onclick	Attr"
+			],
+			[
+				"border",
+				"border-radius"
+			],
+			[
+				"t",
+				"default"
+			],
+			[
+				"ba",
+				"background-repeat"
+			],
+			[
+				"inline",
+				"inline-block"
+			],
+			[
+				"te",
+				"text-transform"
+			],
+			[
+				"padding-",
+				"padding-bottom"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "<?php\n\nrequire_once 'partials/header.php';\n\n$genders = array(\n	1 => 'Homme',\n	2 => 'Femme'\n	);\n\necho debug($_POST);\n\n$firstname = !empty($_POST['firstname']) ? strip_tags($_POST['firstname']) : '';\n$lastname = !empty($_POST['lastname']) ? strip_tags($_POST['lastname']) : '';\n$gender = !empty($_POST['gender']) ? $_POST['gender'] : '';\n$email = !empty($_POST['email']) ? strip_tags($_POST['email']) : '';\n$password = !empty($_POST['password']) ? strip_tags($_POST['password']) : '';\n$confirm_password = !empty($_POST['confirm_password']) ? strip_tags($_POST['confirm_password']) : '';\n$newsletter = !empty($_POST['newsletter']) ? $_POST['newsletter'] : '';\n\n// Initialiser un tableau $errors et une chaine $result\n$errors = array();\n$result = '';\n\n// Le formulaire a été soumis, l'utilisateur a appuyé sur Envoyer\nif (!empty($_POST)) {\n\n	// Vérifier que les champs obligatoires ne sont pas vides\n	// Pour chaque erreur rencontrée, ajouter une entrée dans le tableau $errors correspondant au champ en erreur\n	if (empty($firstname) || strlen($firstname) > 100) {\n		$errors['firstname'] = 'Ton nom est invalide (longueur max 100)';\n	}\n	if (empty($lastname) || strlen($lastname) > 100) {\n		$errors['lastname'] = 'Ton nom est invalide (longueur max 100)';\n	}\n	if (empty($gender)) {\n		$errors['gender'] = 'Choisissez un genre';\n	}\n	if (empty($email) || filter_var($email, FILTER_VALIDATE_EMAIL) == false) {\n		$errors['email'] = 'Ton email est invalide';\n	}\n	if (empty($password) || empty($confirm_password) || strlen($password) > 32 || strlen($password) < 6) {\n		$errors['password'] = 'Ton password est invalide (longueur min-6, max 32)';\n	}\n	if (!isset($_POST['cgu'])){\n		$errors['cgu'] = 'Vous devez accepter les CGU';\n	}\n\n	// S'il n'y a pas d'erreur on lance la requête d'insertion\n	if (empty($errors)) {\n\n		$crypted_password = password_hash($password, PASSWORD_BCRYPT);\n\n		$query = $db->prepare('INSERT INTO user SET firstname = :firstname, lastname = :lastname, gender = :gender, email = :email, password = :password, newsletter = :newsletter, created_date = NOW()');\n		$query->bindValue('firstname', $firstname);\n		$query->bindValue('lastname', $lastname);\n		$query->bindValue('gender', $gender, PDO::PARAM_INT);\n		$query->bindValue('email', $email);\n		$query->bindValue('password', $crypted_password);\n		$query->bindValue('newsletter', $newsletter, PDO::PARAM_INT);\n		$query->execute();\n\n		// On récupère l'identifiant unique automatiquement généré par la requête\n		$insert_id = $db->lastInsertId();\n\n		//Si la requête a réussie (c.f. lastInsertId()), on affiche une confirmation à l'utilisateur\n		if (!empty($insert_id)) {\n			$result .= '<div class=\"alert alert-success\">Votre message a bien été envoyé</div>';\n			$result .= '<script>setTimeout(function() { location.href = \"article.php?id='.$insert_id.'\"; }, 3000);</script>';\n		} else {\n			$result .= '<div class=\"alert alert-danger\">Une erreur s\\'est produite, merci de réessayer ultèrieurement</div>';\n		}\n	}\n}\n?>\n\n		<h1>Inscription</h1>\n		<hr>\n\n		<div class=\"card card-container\">\n			<?php if (!empty($errors)) { ?>\n			<div class=\"alert alert-danger\">\n				<ul>\n				<?php\n				foreach($errors as $error) {\n					echo '<li>'.$error.'</li>';\n				}\n				?>\n				</ul>\n			</div>\n			<?php } ?>\n\n			<form class=\"form-register\" method=\"POST\" novalidate>\n\n				<div class=\"form-group\">\n					<label for=\"firstname\">Prénom</label>\n					<input type=\"text\" name=\"firstname\" class=\"form-control\" id=\"firstname\" placeholder=\"Votre prénom\" value=\"<?= $firstname ?>\" autofocus>\n				</div>\n\n				<div class=\"form-group\">\n					<label for=\"lastname\">Nom</label>\n					<input type=\"text\" class=\"form-control\" name=\"lastname\" id=\"lastname\" value=\"<?= $lastname ?>\" placeholder=\"Votre nom\">\n				</div>\n\n				<div class=\"form-group\">\n					<label for=\"gender\">Sexe</label>\n					<br>\n					<label class=\"radio-inline\">\n					<?php foreach($genders as $key => $gender){\n						$checked = '';\n						if($gender = $key){\n							$checked = 'checked';\n						}\n						} ?>\n						<input type=\"radio\" name=\"gender\" id=\"gender_male\" value=\"1\" <?= $checked ?>> Homme\n					</label>\n					<label class=\"radio-inline\">\n						<input type=\"radio\" name=\"gender\" id=\"gender_femlae\" value=\"2\" <?= $checked ?>> Femme\n					</label>\n				</div>\n\n				<div class=\"form-group\">\n					<label for=\"email\">Adresse email</label>\n					<input type=\"email\" class=\"form-control\" name=\"email\" id=\"email\" value=\"<?= $email ?>\" placeholder=\"Un email valide\">\n				</div>\n\n				<div class=\"form-group\">\n					<label for=\"password\">Mot de passe</label>\n					<input type=\"password\" id=\"password\" name=\"password\" class=\"form-control\" placeholder=\"Un mot de passe de 6 caractères minimum\">\n				</div>\n\n				<div class=\"form-group\">\n					<label for=\"confirm_password\">Confirmation du mot de passe</label>\n					<input type=\"password\" id=\"confirm_password\" name=\"confirm_password\" class=\"form-control\" placeholder=\"Répétez votre mot de passe\">\n				</div>\n\n				<div class=\"checkbox\">\n					<label>\n						<input name=\"newsletter\" id=\"newsletter\" name=\"newsletter\" type=\"checkbox\" value=\"1\"> Inscription à la newsletter\n					</label>\n				</div>\n\n				<div class=\"checkbox\">\n					<label>\n						<input name=\"cgu\" id=\"cgu\" name=\"cgu\" type=\"checkbox\" value=\"1\"> Accepter les CGU\n					</label>\n				</div>\n				<br>\n\n				<button class=\"btn btn-lg btn-primary btn-block btn-signin\" type=\"submit\">Inscription</button>\n\n			</form><!-- /form -->\n\n		</div><!-- /card-container -->\n\n<?php require_once 'partials/footer.php' ?>",
+			"file": "register.php",
+			"file_size": 5657,
+			"file_write_time": 130899139540252140,
+			"settings":
+			{
+				"buffer_size": 5476,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "login.php",
+			"settings":
+			{
+				"buffer_size": 2370,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "inc/config.php",
+			"settings":
+			{
+				"buffer_size": 208,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "send.php",
+			"settings":
+			{
+				"buffer_size": 2850,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "README.md",
+			"settings":
+			{
+				"buffer_size": 1402,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "partials/navbar.php",
+			"settings":
+			{
+				"buffer_size": 1851,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "<?php\n\nrequire 'inc/config.php';\n\n// Détruit toutes les variables de session (vide le tableau $_SESSION)\nsession_unset($_SESSION);\n\n// Détruit la session côté serveur (supprime le fichier /tmp/sess_XXXXXX)\nsession_destroy();\n\n// Détruit le cookie client avec l'identifiant de sessions\netcookie(session_name(), false, 1, '/');\n\nheader('Location: index.php');",
+			"file": "logout.php",
+			"file_size": 375,
+			"file_write_time": 130899131391595932,
+			"settings":
+			{
+				"buffer_size": 357,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 219.0,
+		"last_filter": "instal",
+		"selected_items":
+		[
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			]
+		],
+		"width": 512.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/xampp/htdocs/lesjoiesducode",
+		"/C/xampp/htdocs/lesjoiesducode/inc",
+		"/C/xampp/htdocs/lesjoiesducode/partials"
+	],
+	"file_history":
+	[
+		"/C/Users/Etudiant/Desktop/index.html",
+		"/C/Users/Etudiant/Desktop/ad.php",
+		"/C/Users/Etudiant/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/Etudiant/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Etudiant/Desktop/sessions/logout.php",
+		"/C/xampp/htdocs/lesjoiesducode/logout.php",
+		"/C/Users/Etudiant/Desktop/sessions/page2.php",
+		"/C/xampp/htdocs/lesjoiesducode/article.php",
+		"/C/xampp/htdocs/lesjoiesducode/search.php",
+		"/C/xampp/htdocs/lesjoiesducode/random.php",
+		"/C/xampp/htdocs/lesjoiesducode/partials/article-common.php",
+		"/C/xampp/htdocs/lesjoiesducode/index.php",
+		"/C/xampp/htdocs/lesjoiesducode/inc/db.php",
+		"/C/Users/Etudiant/AppData/Local/Temp/fz3temp-1/chat_posts.php",
+		"/C/Users/Etudiant/AppData/Local/Temp/fz3temp-1/cost_crypt.php",
+		"/C/xampp/htdocs/lesjoiesducode/.gitignore",
+		"/C/xampp/htdocs/lesjoiesducode/send.php",
+		"/C/xampp/htdocs/lesjoiesducode/README.md",
+		"/C/xampp/htdocs/Ajax/exoChat/php/scripts/cost_crypt.php",
+		"/C/Ruby21-x64/lib/ruby/2.1.0/win32/registry.rb",
+		"/C/xampp/htdocs/Ajax/exoChat/php/chat_add_msg.php",
+		"/C/Users/Etudiant/AppData/Local/Temp/fz3temp-1/chat_add_msg.php",
+		"/C/xampp/htdocs/Ajax/exoChat/php/chat_posts.php",
+		"/C/xampp/htdocs/minicine/inc/scripts/post_generator.php",
+		"/C/xampp/htdocs/minicine/search.php",
+		"/C/xampp/htdocs/minicine/.gitignore",
+		"/C/xampp/htdocs/minicine/src/contact.html",
+		"/C/Program Files/Git/mingw64/share/doc/git-doc/git-config.html",
+		"/C/xampp/htdocs/blog/.gitignore",
+		"/C/xampp/htdocs/blog/inc_partial/scripts/project_generator.php",
+		"/C/xampp/htdocs/blog/article.html",
+		"/C/xampp/htdocs/blog/news.php",
+		"/C/xampp/htdocs/blog/search.php",
+		"/C/xampp/htdocs/blog/index.php",
+		"/C/xampp/htdocs/blog/index.html",
+		"/C/xampp/htdocs/blog/form.php",
+		"/C/xampp/htdocs/blog/contact.php",
+		"/C/xampp/htdocs/blog/article.php",
+		"/C/xampp/htdocs/minicine/inc/func.php",
+		"/C/xampp/htdocs/minicine/partials/sidebar-movie.php",
+		"/C/xampp/htdocs/minicine/partials/sidebar.php",
+		"/C/xampp/htdocs/minicine/partials/head.php",
+		"/C/xampp/htdocs/minicine/inc/config.php",
+		"/C/xampp/htdocs/minicine/partials/nav.php",
+		"/C/xampp/htdocs/minicine/partials/footer.php",
+		"/C/xampp/htdocs/minicine/movie.php",
+		"/C/xampp/htdocs/minicine/instructions.txt",
+		"/C/xampp/htdocs/minicine/js/script.js",
+		"/C/xampp/htdocs/minicine/css/styles.css",
+		"/C/xampp/htdocs/minicine/index.php",
+		"/C/xampp/htdocs/minicine/script_insertPicture.php",
+		"/C/xampp/htdocs/minicine/partials/sidebar-news.php",
+		"/C/Users/Etudiant/Desktop/AdrienRousselet/FondamentauxJQuery/Exo2/js/scripts.js",
+		"/C/xampp/htdocs/FondamentauxPhp2/shop/inc/func.php",
+		"/C/xampp/htdocs/minicine/news.php",
+		"/C/xampp/htdocs/minicine/src/movie.html",
+		"/C/xampp/htdocs/minicine/contact.php",
+		"/C/xampp/htdocs/minicine/movie.ph.html",
+		"/C/xampp/htdocs/minicine/inc/db.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/shop/inc/db.php",
+		"/C/xampp/htdocs/blog/inc/config.php",
+		"/C/Users/Etudiant/Desktop/consignes-contact.txt",
+		"/C/xampp/htdocs/blog/css/blog.css",
+		"/C/Users/Etudiant/Desktop/contact.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/shop/consignes.txt",
+		"/C/xampp/htdocs/FondamentauxPhp2/shop/css/styles.css",
+		"/C/xampp/htdocs/FondamentauxPhp2/shop/inc_partial/footer.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/shop/404.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/shop/inc_partial/header.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/shop/product.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/shop/index.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/shop/inc/config.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/shop/inc/products.php",
+		"/C/xampp/htdocs/blog/inc/db.php",
+		"/C/xampp/htdocs/blog/inc_partial/article_common.php",
+		"/C/xampp/htdocs/blog/inc_partial/head.php",
+		"/C/xampp/htdocs/blog/inc_partial/nav.php",
+		"/C/xampp/htdocs/blog/inc/head.php",
+		"/C/xampp/htdocs/blog/inc/nav.php",
+		"/C/xampp/htdocs/blog/www/inc/db.php",
+		"/C/xampp/htdocs/phpinfo.php",
+		"/C/xampp/htdocs/FondamentauxSQL/exo2.sql",
+		"/C/xampp/htdocs/index.php",
+		"/C/Users/Etudiant/Desktop/exo1.sql",
+		"/C/xampp/htdocs/FondamentauxPhp2/Exo5/index.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/Exo2/inc/footer.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/Exo2/inc/func.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/Exo2/article.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/Exo2/index.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/Exo2/css/blog.css",
+		"/C/xampp/htdocs/FondamentauxPhp2/Exo2/search.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/Exo2/contact.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/Exo2/news.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/Exo2/form.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/Exo2/article.html",
+		"/C/xampp/htdocs/FondamentauxPhp2/Exo4/page1.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/Exo4/page2.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/Exo4/posts.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/Exo3/colors.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/Exo3/page1.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/Exo3/page2.php",
+		"/C/Users/Etudiant/AppData/Roaming/Sublime Text 3/Packages/Color Highlighter/ColorHighlighter.sublime-settings",
+		"/C/Users/Etudiant/AppData/Roaming/Sublime Text 3/Packages/User/ColorHighlighter.sublime-settings",
+		"/C/xampp/htdocs/FondamentauxPhp2/Exo2/inc/head.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/Exo2/inc/posts.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/cours.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/Exo2/inc/nav.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/Exo2/random.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/Exo2/inc/sidebar.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/Exo2/index.html",
+		"/C/xampp/htdocs/FondamentauxPhp2/index.php",
+		"/C/xampp/htdocs/FondamentauxPhp2/test.php",
+		"/C/Users/Etudiant/AppData/Roaming/Sublime Text 3/Packages/User/Distraction Free.sublime-settings",
+		"/C/Users/Etudiant/AppData/Roaming/Sublime Text 3/Packages/User/PHP.sublime-settings",
+		"/C/Users/Etudiant/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
+		"/C/Users/Etudiant/AppData/Roaming/Sublime Text 3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/C/Users/Etudiant/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/Etudiant/Desktop/inde.html",
+		"/C/xampp/htdocs/FondamentauxPhp1/Exo2/include/data.php",
+		"/C/xampp/htdocs/FondamentauxPhp1/Exo2/index.php",
+		"/C/xampp/htdocs/FondamentauxPhp1/exo1.php",
+		"/C/xampp/htdocs/FondamentauxPhp1/Exo2/include/head.php",
+		"/C/Users/Etudiant/Desktop/AdrienRousselet/FondamentauxPhp/0Jour1/Exo1/project/index.html",
+		"/C/Users/Etudiant/Desktop/AdrienRousselet/FondamentauxPhp/0Jour1/Exo1/projetExo1.sublime-project",
+		"/C/Users/Etudiant/Desktop/AdrienRousselet/FondamentauxJQuery/ExoMostrare/css/styles.css",
+		"/C/Users/Etudiant/Desktop/AdrienRousselet/FondamentauxJQuery/ExoMostrare/js/scriptsRegister.js",
+		"/C/Users/Etudiant/Desktop/AdrienRousselet/FondamentauxJQuery/ExoMostrare/connect.html",
+		"/C/Users/Etudiant/Desktop/AdrienRousselet/FondamentauxJQuery/ExoMostrare/about.html"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"C:\\xampp\\htdocs\\lesjoiesducode",
+			"C:\\xampp\\htdocs\\FondamentauxPhp2\\Exo2"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"header",
+			"$article['name']",
+			"SELECT * FROM articles",
+			"lastname",
+			"email",
+			"password",
+			"email",
+			"gender",
+			"content",
+			"inc",
+			"3",
+			"project",
+			"projects",
+			"list_projects",
+			"query_year",
+			"query_genres",
+			"query_directors",
+			"genre",
+			"genres",
+			"active",
+			"$subject_label",
+			"contact_subjects",
+			"wide",
+			"$key",
+			"');",
+			"picture_tag",
+			"post_id",
+			"val",
+			"current_index",
+			"$posts[0]",
+			"echo_picture",
+			"'picture' => 'img/",
+			"'picture' => '",
+			"meta",
+			"<br>",
+			"			console.log(isValid);",
+			"$('#popIn <ul>')",
+			"$('#popIn').append('<ul>')",
+			"console.log",
+			"isFormValid",
+			" class=\"div\"",
+			"*",
+			"50",
+			"('#",
+			"('#ball')",
+			"('#",
+			"500",
+			"id",
+			"#first",
+			"#name",
+			"name",
+			"listComments",
+			"5",
+			"comment",
+			"firstName",
+			"this.e",
+			"Email",
+			"email",
+			"Email",
+			"email",
+			"nickname",
+			"name",
+			"nickname",
+			"id=\"overlay\" class=\"fancybox\"",
+			"id=\"overlay fancybox\"",
+			"url('",
+			"ease",
+			" fancybox",
+			"grouped_elements",
+			"text",
+			"#userGame",
+			"#cpuGame ",
+			"slideUp()",
+			"slideDown",
+			"slideOut",
+			"hide",
+			"strong",
+			"pseudo",
+			"blur",
+			"left",
+			"<img ",
+			"0.15em",
+			"Ciseaux",
+			"Pierre",
+			"Feuille",
+			"ragraph8",
+			"value",
+			"iList",
+			"color:",
+			"Color",
+			"color",
+			"textContent",
+			"getElementsByTagName",
+			"Recalculer une aire",
+			"innerHTML",
+			"x",
+			"color",
+			"user",
+			"h2",
+			"labe",
+			"contentProject",
+			"i{",
+			"contentProject",
+			"place",
+			"h1",
+			"overlay",
+			"contentWorks",
+			"overlay",
+			"backgroundYellow",
+			"</p>",
+			"<p>",
+			"><></",
+			"180deg",
+			"article",
+			"10px",
+			"bbbbbb",
+			"ul",
+			"a{",
+			"img",
+			"@media all and (min-width:20em){",
+			"@media all and (min-width:25em){",
+			"lorem",
+			"\n	",
+			"nav",
+			"menu",
+			"h1"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"$article['author']",
+			"SELECT * FROM posts",
+			"post",
+			"list_posts",
+			"$post_id",
+			"key",
+			"current_article",
+			"$current_index",
+			"picture_tag",
+			"'picture' => '",
+			"'picture' => 'img/",
+			"</li>",
+			"",
+			"$('#popIn ul')",
+			"isValid",
+			"",
+			"email",
+			"name",
+			"class=\"overlay fancybox\"",
+			"id=\"overlay\" class=\"fancybox\"",
+			"slideUp('fast')",
+			"slideUp",
+			"<img class=\"wailer\"",
+			"0.0625em",
+			"\"Ciseaux\"",
+			"\"Pierre\"",
+			"\"Feuille\"",
+			"ragraph",
+			"color",
+			"x",
+			"userArray",
+			"B0B0B0",
+			"@media all and (min-width:30em){",
+			"@media all and (min-width:20em){"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "register.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5476,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4179,
+								4179
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1552.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "login.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2370,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								800,
+								800
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 225.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "inc/config.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 208,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								208,
+								208
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "send.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2850,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								835,
+								835
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 4,
+					"file": "README.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1402,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1370,
+								1379
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 180.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "partials/navbar.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1851,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1470,
+								1470
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 260.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "logout.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 357,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								131,
+								131
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				0,
+				1,
+				1,
+				2
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			0.624869927159,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "jdc.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"contact.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 137.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

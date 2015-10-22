@@ -3,7 +3,7 @@
 define('HOST', 'localhost');
 define('USER', 'root');
 define('PASS', '');
-define('DB', 'joiesducode');
+define('DB', 'lesjoiesducode');
 
 try {
 

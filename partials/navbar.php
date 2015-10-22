@@ -35,9 +35,17 @@
 				</form>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li class="<?= ($current_page == 'login.php' ? ' active' : '')?>"><a href="login.php">Connexion</a></li>
-					<li class="<?= ($current_page == 'register.php' ? ' active' : '')?>"><a href="register.php">Inscription</a></li>
+				<?php
+				if (userIsLogged()){ ?>
+					<li><a href="">Bonjour <?= $_SESSION['firstname'] ?></a></li>
+					<li><a href="logout.php">Logout</a></li>
+				<?php }else{ ?>
+						<li class="<?= ($current_page == 'login.php' ? ' active' : '')?>"><a href="login.php">Connexion</a></li>
+						<li class="<?= ($current_page == 'register.php' ? ' active' : '')?>"><a href="register.php">Inscription</a></li>
+				<?php }
+				?>
 				</ul>
+
 
 			</div><!--/.nav-collapse -->
 		</div>
