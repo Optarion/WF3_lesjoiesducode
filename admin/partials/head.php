@@ -1,7 +1,11 @@
 <?php
-	require_once '../inc/config.php';
+	require_once 'inc/config.php';
 	require_once '../inc/db.php';
 	require_once '../inc/func.php';
+
+if(!userIsLogged()){
+	header('Location: ../login.php');
+}
 
 ?>
 
@@ -19,6 +23,7 @@
 
 	<script src="js/jquery-2.1.4.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script src="//cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
 	<script src="js/holder.js"></script>
 	<script src="js/app.js"></script>
 	<!--
@@ -28,6 +33,8 @@
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="//cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css">
+
 	<link href="css/styles.css" rel="stylesheet">
 </head>
 

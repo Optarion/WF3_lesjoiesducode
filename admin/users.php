@@ -4,13 +4,12 @@
 	$query = $db->query('SELECT * FROM user ORDER BY created_date DESC');
 	$users = $query->fetchAll();
 
-	if(!empty($_GET['delete_user'])){
+	$count_users = $query->ROWCOUNT();
 
-	}
 ?>
 
 
-<h1>Tous les JDC</h1>
+<h1>Tous les Users (<?= $count_users ?> users)</h1>
 <table class="table table-hover">
 	<thead>
 		<tr>

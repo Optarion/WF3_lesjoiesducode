@@ -16,4 +16,6 @@ $(function() {
 		$('#sidebar-left').toggle();
 	});
 
+	$('.table').DataTable();
+
 });

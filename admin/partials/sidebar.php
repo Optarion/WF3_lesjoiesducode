@@ -1,12 +1,14 @@
 <div id="sidebar-left" class="col-sm-3 col-md-2 sidebar">
 	<ul class="nav nav-sidebar">
-		<li class="active"><a href="index.php">Tableau de bord</a></li>
-		<li><a href="stats.php">Statistiques</a></li>
-		<li><a href="reports.php">Rapports</a></li>
-		<li><a href="articles.php">Articles JDC</a></li>
-		<li><a href="users.php">Utilisateurs</a></li>
-		<li><a href="comments.php">Commentaires</a></li>
-		<li><a href="messages.php">Messages</a></li>
+		<?php
+			foreach($pages as $page_url => $page_name) {
+				$active = '';
+				if ($page_url == $current_page) {
+					$active = ' active';
+				}
+			?>
+			<li class="<?= $active ?>"><a href="<?= $page_url ?>"><?= $page_name ?></a></li>
+		<?php } ?>
 	</ul>
 
 </div>
