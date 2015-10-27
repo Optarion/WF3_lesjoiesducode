@@ -1,8 +1,20 @@
 <?php
 	require_once 'partials/head.php';
 
-	$author = !empty($_POST['author']) ? strip_tags($_POST['author']) : '';
+	//echo debug($_FILES);
+
+	if(!empty($_GET) && $_GET['action'] == 'delete'){
+		$query = $db->query('DELETE FROM posts WHERE id = '.$_GET['id']);
+
+		header('Location: articles.php');
+		exit();
+	}
+
+	$author = !empty($_POST['author']) ? strip_tags($_POST['author']) : $_SESSION['firstname'].' '.$_SESSION['lastname'];
 	$content = !empty($_POST['content']) ? strip_tags($_POST['content']) : '';
+	$picture = !empty($_FILES['picture']['name']) ? $_FILES['picture']['name'] : '';//stocke le nom d'origine pour modification de sécurité
+
+	$max_file_size = 2000000; // ~2Mo
 
 	// Initialiser un tableau $errors et une chaine $result
 	$errors = array();
@@ -23,9 +35,34 @@
 		// S'il n'y a pas d'erreur on lance la requête d'insertion
 		if (empty($errors)) {
 
-			$query = $db->prepare('INSERT INTO posts SET author = :author, content = :content, creation_date = NOW()');
+			if($_FILES['picture']['error'] == UPLOAD_ERR_OK && $_FILES['picture']['size'] < $max_file_size){
+
+				$picture_mime_type = image_type_to_mime_type(exif_imagetype($_FILES['picture']['tmp_name']));
+
+				switch($picture_mime_type){
+					case 'image/png':
+					case 'image/jpeg':
+					case 'image/gif':
+						move_uploaded_file($_FILES['picture']['tmp_name'], '../img/uploads/'.$picture);
+					break;
+
+					default:
+						$errors['picture'] = 'Le fichier doit être une image';
+						$picture = '';
+					break;
+				}
+			}else{
+				$errors['picture'] = 'Le fichier doit faire moins de 3Mo';
+				$picture = '';
+			}
+		}
+
+		if (empty($errors)) {
+
+			$query = $db->prepare('INSERT INTO posts SET author = :author, content = :content, picture = :picture, creation_date = NOW()');
 			$query->bindValue(':author', $author, PDO::PARAM_STR);
 			$query->bindValue(':content', $content, PDO::PARAM_STR);
+			$query->bindValue(':picture', $picture, PDO::PARAM_STR);
 			$query->execute();
 
 			// On récupère l'identifiant unique automatiquement généré par la requête
@@ -43,7 +80,7 @@
 	}
 ?>
 
-	<h1>Ajouter un Joie du code</h1>
+	<h1>Ajouter un "Joie du code"</h1>
 	<hr>
 
 	<?php if (!empty($errors)) { ?>
@@ -61,19 +98,28 @@
 	<?php
 	if (!empty($result)) {
 		echo $result;
-	?>
-	<form action="article_add.php" method="POST">
-		<div class="form-group">
-			<label for="author">Votre nom</label>
-			<input type="text" class="form-control" name="author" id="author" placeholder="Entrez votre nom" value="<?= $author ?>">
-		</div>
-		<div class="form-group">
-			<label for="content">Votre Joie de code</label>
-			<textarea name="content" id="content" class="form-control" rows="5" placeholder="Contenu de votre Joie de code"><?= $content ?></textarea>
-		</div>
-		<button type="submit" class="btn btn-default">Envoyer</button>
-	</form>
-	<?php } ?>
+	}else{ ?>
+		<form action="article_add.php" method="POST" enctype="multipart/form-data">
+
+			<!-- Donne une valeur minimum au fichier uploadé (si File Size > MAX_FILE_SIZE alors $_FILES renvoi une erreur) -->
+			<input type="hidden" name="MAX_FILE_SIZE" value="<?= $max_file_size ?>">
+
+			<div class="form-group">
+				<label for="author">Votre nom</label>
+				<input type="text" class="form-control" name="author" id="author" placeholder="Entrez votre nom" value="<?= $author ?>">
+			</div>
+			<div class="form-group">
+				<label for="content">Votre Joie de code</label>
+				<textarea name="content" id="content" class="form-control" rows="5" placeholder="Contenu de votre Joie de code"><?= $content ?></textarea>
+			</div>
+			<div class="form-group">
+				<label for="picture">Image</label>
+				<input type="file" name="picture" id="picture" class="form-control">
+			</div>
+			<button type="submit" class="btn btn-default">Envoyer</button>
+		</form>
+	<?php
+	} ?>
 
 	<?php
 	require_once 'partials/footer.php';

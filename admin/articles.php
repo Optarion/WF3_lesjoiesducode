@@ -28,8 +28,8 @@
 			<?php foreach($post as $data) { ?>
 				<td><?= ucfirst($data) ?></td>
 		<?php } ?>
-		</tr>
-		<?php } ?>
+		</tr
+>		<?php } ?>
 	</tbody>
 
 </table>
