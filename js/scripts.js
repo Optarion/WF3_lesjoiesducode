@@ -1,6 +1,5 @@
 $(document).ready(function(){
-	$('.delete_user').click(function(){
-		confirm('Etes vous sur?');
+	$('.delete_item').click(function(){
+		return confirm('Etes vous sur?');
 	})
-
 })
