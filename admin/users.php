@@ -25,7 +25,7 @@
 
 	<tbody>
 		<?php foreach($users as $user) { ?>
-		<tr>
+		<tr class="user_row">
 			<td><a href="user_add.php?action=update&id=<?= $user['id'] ?>"><i class="fa fa-pencil "></i></a></td>
 			<td><a href="user_add.php?action=delete&id=<?= $user['id'] ?>" class="delete_item"><i class="fa fa-trash-o "></i></a></td>
 			<?php foreach($user as $column => $data) {
