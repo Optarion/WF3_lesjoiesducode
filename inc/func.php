@@ -34,13 +34,33 @@ function userLogin($user) {
 	$_SESSION['user_id'] = $user['id'];
 	$_SESSION['firstname'] = $user['firstname'];
 	$_SESSION['lastname'] = $user['lastname'];
+	$_SESSION['role'] = $user['account_type'];
 
-	if($user['account_type'] == 'admin'){
-		$_SESSION['account_type'] = $user['account_type'];		
-	}
 	return true;
 }
 
 function userIsLogged() {
 	return !empty($_SESSION['user_id']);
+}
+
+function user_getRoleColor($role){
+	static $role_colors;
+	$role_colors = array(
+		1 => 'default',
+		2 => 'info',
+		3 => 'danger'
+		);
+	if(!empty($role_colors[$role])){
+		return $role_colors[$role];
+	}
+	return 'default';
+}
+
+function user_getRoleLabel($role){
+	global $role_labels;
+
+	if(!empty($role_labels[$role])){
+		return $role_labels[$role];
+	}
+	return 'default';
 }
