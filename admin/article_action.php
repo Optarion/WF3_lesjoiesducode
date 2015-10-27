@@ -1,18 +1,34 @@
 <?php
 	require_once 'partials/head.php';
 
-	//echo debug($_FILES);
+	$id = !empty($_GET['id']) ? intval($_GET['id']) : 0;
+	$action = !empty($_GET['action']) ? $_GET['action'] : 'insert';
 
-	if(!empty($_GET) && $_GET['action'] == 'delete'){
-		$query = $db->query('DELETE FROM posts WHERE id = '.$_GET['id']);
+	//Gestion de l'action update
+	if(!empty($id)){
 
-		header('Location: articles.php');
-		exit();
+		$query = $db->prepare('SELECT * FROM posts WHERE id = :id');
+		$query->bindValue('id', $id, PDO::PARAM_INT);
+		$query->execute();
+
+		$post = $query->fetch();
+
+		//Gestion de l'action delete
+		if(!empty($_GET) && $_GET['action'] == 'delete'){
+			$query = $db->query('DELETE FROM posts WHERE id = '.$id);
+
+			header('Location: articles.php');
+			exit();
+		}
 	}
 
-	$author = !empty($_POST['author']) ? strip_tags($_POST['author']) : $_SESSION['firstname'].' '.$_SESSION['lastname'];
-	$content = !empty($_POST['content']) ? strip_tags($_POST['content']) : '';
-	$picture = !empty($_FILES['picture']['name']) ? $_FILES['picture']['name'] : '';//stocke le nom d'origine pour modification de sécurité
+	if(empty($post) && $action == 'update'){
+		exit('Undefined article');
+	}
+
+	$author = isset($_POST['author']) ? strip_tags($_POST['author']) : @$post['author'];
+	$content = isset($_POST['content']) ? strip_tags($_POST['content']) : @$post['content'];
+	$picture = isset($_FILES['picture']['name']) ? $_FILES['picture']['name'] : @$post['picture'];//stocke le nom d'origine pour modification de sécurité
 
 	$max_file_size = 2000000; // ~2Mo
 
@@ -59,7 +75,13 @@
 
 		if (empty($errors)) {
 
-			$query = $db->prepare('INSERT INTO posts SET author = :author, content = :content, picture = :picture, creation_date = NOW()');
+			if($action == 'update'){
+				$query = $db->prepare('UPDATE posts SET author = :author, content = :content, picture = :picture, creation_date = NOW() WHERE id = :id');
+				$query->bindValue('id', $id, PDO::PARAM_INT);
+			}else{
+				$query = $db->prepare('INSERT INTO posts SET author = :author, content = :content, picture = :picture, creation_date = NOW()');
+			}
+
 			$query->bindValue(':author', $author, PDO::PARAM_STR);
 			$query->bindValue(':content', $content, PDO::PARAM_STR);
 			$query->bindValue(':picture', $picture, PDO::PARAM_STR);
@@ -80,7 +102,7 @@
 	}
 ?>
 
-	<h1>Ajouter un "Joie du code"</h1>
+	<h1><?= ucfirst($action) ?> un "Joie du code"</h1>
 	<hr>
 
 	<?php if (!empty($errors)) { ?>
@@ -99,7 +121,7 @@
 	if (!empty($result)) {
 		echo $result;
 	}else{ ?>
-		<form action="article_add.php" method="POST" enctype="multipart/form-data">
+		<form action="article_action.php" method="POST" enctype="multipart/form-data">
 
 			<!-- Donne une valeur minimum au fichier uploadé (si File Size > MAX_FILE_SIZE alors $_FILES renvoi une erreur) -->
 			<input type="hidden" name="MAX_FILE_SIZE" value="<?= $max_file_size ?>">
