@@ -9,6 +9,7 @@
 
 
 <h1>Tous les JDC (<?= $count_posts ?> messages)</h1><button class="btn"><a href="article_action.php">Add message</a></button>
+<hr>
 <table class="table table-hover">
 	<thead>
 		<tr>
@@ -22,7 +23,7 @@
 
 	<tbody>
 		<?php foreach($posts as $post) { ?>
-		<tr>
+		<tr class="post_row">
 			<td><a href="article_action.php?action=update&id=<?= $post['id'] ?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
 			<td><a href="article_action.php?action=delete&id=<?= $post['id'] ?>" class="delete_item"><span class="glyphicon glyphicon-trash"></span></a></td>
 			<?php foreach($post as $data) { ?>

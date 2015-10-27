@@ -131,3 +131,9 @@ body {
 }
 
 #editor { overflow:scroll; max-height:300px }
+
+/* Admin */
+
+.user_row, .post_row{
+  cursor: pointer;
+}
