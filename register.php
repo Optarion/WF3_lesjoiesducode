@@ -60,7 +60,7 @@ if (!empty($_POST)) {
 
 			$crypted_password = password_hash($password, PASSWORD_BCRYPT);
 
-			$query = $db->prepare('INSERT INTO user SET firstname = :firstname, lastname = :lastname, gender = :gender, email = :email, password = :password, newsletter = :newsletter, created_date = NOW(), account_type = "user"');
+			$query = $db->prepare('INSERT INTO user SET firstname = :firstname, lastname = :lastname, gender = :gender, email = :email, password = :password, newsletter = :newsletter, created_date = NOW(), account_type = 1');
 			$query->bindValue(':firstname', $firstname, PDO::PARAM_STR);
 			$query->bindValue(':lastname', $lastname, PDO::PARAM_STR);
 			$query->bindValue(':gender', $gender, PDO::PARAM_INT);
@@ -78,7 +78,8 @@ if (!empty($_POST)) {
 				$user = array(
 					'id' => $insert_id,
 					'firstname' => $firstname,
-					'lastname' => $lastname
+					'lastname' => $lastname,
+					'account_type' => 1
 				);
 
 				$success = userLogin($user);

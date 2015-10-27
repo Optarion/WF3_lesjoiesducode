@@ -16,7 +16,7 @@
 					<li><a href="settings.php">Paramètres</a></li>
 					<li><a href="profile.php">Profile</a></li>
 					<li><a href="../index.php">Site</a></li>
-					<li><a href="logout.php">Déconnexion</a></li>
+					<li><a href="../logout.php">Déconnexion</a></li>
 				<?php }else{ ?>
 					<li><a href="login.php">Connexion</a></li>
 				<?php } ?>

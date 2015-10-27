@@ -28,11 +28,16 @@
 		<tr>
 			<td><a href="user_add.php?action=update&id=<?= $user['id'] ?>"><i class="fa fa-pencil "></i></a></td>
 			<td><a href="user_add.php?action=delete&id=<?= $user['id'] ?>" class="delete_item"><i class="fa fa-trash-o "></i></a></td>
-			<?php foreach($user as $data) {
-				if($data != $user['password']){?>
+			<?php foreach($user as $column => $data) {
+				if($column != 'password'){
+					if( $column == 'account_type'){ ?>
+						<td><span class="label label-<?= user_getRoleColor($user['account_type']) ?>"><?= ucfirst(user_getRoleLabel($user['account_type'])) ?></td>
+					<?php }else{ ?>
+						<td><?= $data == $user['email'] ? $data : ucfirst($data) ?></td>
+					<?php }
 
-				<td><?= $data == $user['email'] ? $data : ucfirst($data) ?></td>
-				<?php }
+				}
+
 		} ?>
 
 		</tr>

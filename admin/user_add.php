@@ -27,7 +27,7 @@ if($_GET['action'] == 'delete'){
 	}
 }
 
-if($_GET['action'] == 'update'){ 
+if($_GET['action'] == 'update'){
 	$query = $db->query('SELECT * FROM user WHERE id = '.$_GET['id'].'');
 	$user = $query->fetch();
 
@@ -66,7 +66,7 @@ if($_GET['action'] == 'update'){
 					if ($gender_label == $gender){
 						$checked = ' selected';
 					}?>
-					<option value="<?= $gender_label ?>"<?= $selected ?>><?= $gender_value ?></option>	
+					<option value="<?= $gender_label ?>"<?= $selected ?>><?= $gender_value ?></option>
 				<?php }?>
 			</select>
 		</div>
@@ -87,9 +87,9 @@ if($_GET['action'] == 'update'){
 		<div class="form-group">
 			<label for="account_type">Account Type</label>
 			<select name="account_type" id="account_type">
-				<option value="0"<?= $account_type == 'user' ? ' selected' : '' ?>>User</option>
-				<option value="1"<?= $account_type == 'admin' ? ' selected' : '' ?>>Admin</option>
-				<option value="2"<?= $account_type == 'writer' ? ' selected' : '' ?>>Writer</option>
+				<option value="1"<?= $account_type == 1 ? ' selected' : '' ?>>User</option>
+				<option value="2"<?= $account_type == 2 ? ' selected' : '' ?>>Writer</option>
+				<option value="3"<?= $account_type == 3 ? ' selected' : '' ?>>Admin</option>
 			</select>
 		</div>
 
