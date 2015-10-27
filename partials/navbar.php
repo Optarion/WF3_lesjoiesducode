@@ -20,8 +20,6 @@
 						}
 					?>
 					<li class="<?= $active ?>"><a href="<?= $page_url ?>"><?= $page_name ?></a></li>
-					<?php } if(!empty($_SESSION['account_type'])){ ?>
-						<li class="<?= $active ?>"><a href="admin">Backoffice</a></li>	
 					<?php } ?>
 				</ul>
 
@@ -39,6 +37,9 @@
 				<ul class="nav navbar-nav navbar-right">
 					<?php if (userIsLogged()) { ?>
 					<li><a>Bonjour <?= $_SESSION['firstname'] ?></a></li>
+					<?php if($_SESSION['role'] >= USER_ROLE_WRITER){ ?>
+						<li class="<?= $active ?>"><a href="admin">Backoffice</a></li>
+					<?php } ?>
 					<li><a href="logout.php">Déconnexion</a></li>
 					<?php } else { ?>
 					<li class="<?= ($current_page == 'login.php' ? ' active' : '')?>"><a href="login.php">Connexion</a></li>
